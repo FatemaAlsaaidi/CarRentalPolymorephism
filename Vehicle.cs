@@ -71,6 +71,17 @@ namespace CarRentalPolymorephism
 
         }
 
+        // Overload method for CalculateRentalCost with driver for Car
+        public new double CalculateRentalCost(int days, bool withDriver)
+        {
 
-    } 
+            double baseCost = CalculateRentalCost(days);
+            if (withDriver)
+            {
+                return baseCost + (days * 70);
+            }
+            return baseCost;
+
+        }
+    }
 }
