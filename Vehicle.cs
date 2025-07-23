@@ -84,4 +84,22 @@ namespace CarRentalPolymorephism
 
         }
     }
+
+    class Truck: Vehicle
+    {
+        public double MaxLoadKg;
+
+        // Override CalculateRentalCost(int days)
+        public virtual double CalculateRentalCost(int days)
+        {
+            double cost = 0;
+            // Apply discount if rental days > 7
+            if (days > 7)
+            {
+                cost *= 1.0; // 10% discount for rentals longer than 7 days [cite: 32]
+            }
+            return cost;
+        }
+
+    }
 }
