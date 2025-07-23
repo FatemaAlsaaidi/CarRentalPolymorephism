@@ -38,10 +38,39 @@ namespace CarRentalPolymorephism
             return baseCost;
 
         }
-
-
-
-
-
     }
+
+    class Car : Vehicle 
+    { 
+        public bool IsLuxury { get; set; }
+
+        // Override CalculateRentalCost(int days)
+        public override double CalculateRentalCost(int days)
+        {
+            double cost = 0;
+            if (IsLuxury == true)
+            {
+                // Apply discount if rental days > 7
+                if (days > 7)
+                {
+                    cost *= 0.80; // 10% discount for rentals longer than 7 days [cite: 32]
+                }
+            }
+            else
+            {
+                if (IsLuxury == false)
+                {
+                    // Apply discount if rental days > 7
+                    if (days > 7)
+                    {
+                        cost *= 0.60; // 10% discount for rentals longer than 7 days [cite: 32]
+                    }
+                }
+            }
+            return cost;
+
+        }
+
+
+    } 
 }
