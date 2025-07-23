@@ -72,7 +72,7 @@ namespace CarRentalPolymorephism
         }
 
         // Overload method for CalculateRentalCost with driver for Car
-        public new double CalculateRentalCost(int days, bool withDriver)
+        public double CalculateRentalCost(int days, bool withDriver)
         {
 
             double baseCost = CalculateRentalCost(days);
@@ -118,6 +118,24 @@ namespace CarRentalPolymorephism
              
             return baseCost;
 
+        }
+
+    }
+
+    class Motorbike : Vehicle 
+    {
+        bool RequiresHelmet = false;
+
+        // Calculate Rental Cost overload for Motorbike
+        public virtual double CalculateRentalCost(int days)
+        {
+            double cost = 0;
+            // Apply discount if rental days > 7
+            if (days > 7)
+            {
+                cost *= 0.40; // 10% discount for rentals longer than 7 days [cite: 32]
+            }
+            return cost;
         }
 
     }
