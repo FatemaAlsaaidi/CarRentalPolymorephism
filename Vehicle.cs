@@ -101,5 +101,24 @@ namespace CarRentalPolymorephism
             return cost;
         }
 
+        // Overload method for CalculateRentalCost with driver for Car
+        public new double CalculateRentalCost(int days, double cargoWeight)
+        {
+            double MaxLoadKg = 100.00;
+
+            double baseCost = CalculateRentalCost(days);
+            if (cargoWeight<= MaxLoadKg)
+            {
+                baseCost = baseCost + (days * 70);
+            }
+            else
+            {
+                baseCost = baseCost + (days * 90);
+            }
+             
+            return baseCost;
+
+        }
+
     }
 }
