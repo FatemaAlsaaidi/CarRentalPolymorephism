@@ -14,7 +14,7 @@ namespace CarRentalPolymorephism
         public int Year { get; set; }
         public string LicensePlate { get; set; }
 
-        // Apply a discount if rental days > 7   ======= virtual
+        // Calculate Rental Cost   ======= virtual
         public virtual double CalculateRentalCost(int days)
         {
             double cost = 0;
@@ -26,6 +26,22 @@ namespace CarRentalPolymorephism
             return cost;
         }
 
-       
+        // Calculate Rental Cost ================= Overloading
+        public double CalculateRentalCost(int days, bool withDriver)
+        {
+
+            double baseCost = CalculateRentalCost(days);
+            if (withDriver)
+            {
+                return baseCost + (days * 50); 
+            }
+            return baseCost;
+
+        }
+
+
+
+
+
     }
 }
