@@ -183,5 +183,12 @@ namespace CarRentalPolymorephism
             return cost;
         }
 
+        // Constructor for Motorbike
+        public Motorbike(string brand, string model, int year, string licensePlate, bool requiresHelmet)
+            : base(brand, model, year, licensePlate)
+        {
+            RequiresHelmet = requiresHelmet;
+        }
+
     }
 }
