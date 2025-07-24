@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +13,23 @@ namespace CarRentalPolymorephism
         // Feilds 
         public string Brand { get; set; }
         public string Model { get; set; }
-        public int Year { get; set; }
+        private int year;
         public string LicensePlate { get; set; }
+
+        public int Year
+        {
+            get {  return year; }
+            set 
+            { if (value < 2010) 
+                {
+                    Console.WriteLine("Error Input; year can not be less than 2010");
+                }
+                else
+                {
+                    year = value;
+                }
+            }
+        }
 
         // Calculate Rental Cost   ======= virtual
         public virtual double CalculateRentalCost(int days)
@@ -29,14 +46,25 @@ namespace CarRentalPolymorephism
         // Calculate Rental Cost ================= Overloading
         public double CalculateRentalCost(int days, bool withDriver)
         {
+         
 
-            double baseCost = CalculateRentalCost(days);
+
+        double baseCost = CalculateRentalCost(days);
             if (withDriver)
             {
                 return baseCost + (days * 50); 
             }
             return baseCost;
 
+        }
+
+        // Constructor for Vehicle
+        public Vehicle(string brand, string model, int year, string licensePlate)
+        {
+            Brand = brand;
+            Model = model;
+            Year = year; // Use the property to apply the validation logic
+            LicensePlate = licensePlate;
         }
     }
 
@@ -83,6 +111,9 @@ namespace CarRentalPolymorephism
             return baseCost;
 
         }
+
+        // constructor
+
     }
 
     class Truck: Vehicle
