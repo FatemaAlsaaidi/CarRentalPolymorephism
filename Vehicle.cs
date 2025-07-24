@@ -156,6 +156,14 @@ namespace CarRentalPolymorephism
             return baseCost;
 
         }
+        // Constructor for Truck
+        public Truck(string brand, string model, int year, string licensePlate, double maxLoadKg)
+            : base(brand, model, year, licensePlate)
+        {
+            MaxLoadKg = maxLoadKg;
+        }
+
+
 
     }
 
