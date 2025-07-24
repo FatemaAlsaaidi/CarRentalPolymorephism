@@ -113,6 +113,12 @@ namespace CarRentalPolymorephism
         }
 
         // constructor
+        // Constructor for Car
+        public Car(string brand, string model, int year, string licensePlate, bool isLuxury)
+            : base(brand, model, year, licensePlate) // Call the base Vehicle constructor
+        {
+            IsLuxury = isLuxury;
+        }
 
     }
 
