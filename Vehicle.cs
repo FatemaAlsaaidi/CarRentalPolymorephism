@@ -169,7 +169,7 @@ namespace CarRentalPolymorephism
 
     class Motorbike : Vehicle 
     {
-        bool RequiresHelmet = false;
+        public bool RequiresHelmet = false;
 
         // Calculate Rental Cost overload for Motorbike
         public virtual double CalculateRentalCost(int days)
